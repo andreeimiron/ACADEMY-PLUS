@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Balloon</title>
+<style>
+.balloon {
+	background-color: red;
+	width: 200px;
+	height: 200px;
+	border-radius: 100%;
+	margin-top: 20%;
+}
+</style>
+</head>
+<body>
+<center>
+<div class="balloon" onClick="increaseSize(); changeColor();" onMouseOut="decreaseSize(); changeColorBack();">
+</div>
+</center>
+<script>
+	var balloon = document.querySelector(".balloon");
+	var size = 200;
+	var color = 'red';
+
+	function increaseSize() {
+		size += 10;
+		if (size > 420)
+			size = 200;
+		balloon.style['width'] = size + "px";
+		balloon.style['height'] = size + "px";
+	}
+
+	function decreaseSize() {
+		if (size > 200)
+			size -= 5;
+		balloon.style['width'] = size + "px";
+		balloon.style['height'] = size + "px";
+	}
+
+	function changeColor() {
+		if (color == 'red')
+			color = 'green';
+		else if (color == 'green')
+			color = 'blue';
+		else if (color == 'blue')
+			color = 'red';
+		balloon.style['background-color'] = color;
+	}
+	
+	function changeColorBack() {
+		if (color == 'red')
+			color = 'blue';
+		else if (color == 'blue')
+			color = 'green';
+		else if (color == 'green')
+			color = 'red';
+		balloon.style['background-color'] = color;
+	}
+</script>
+</body>
+</html> 

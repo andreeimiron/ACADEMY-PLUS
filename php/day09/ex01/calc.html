@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculator</title>
+<style>
+div {
+	margin-top: 20%;
+}
+</style>
+</head>
+<body>
+<center>
+<div>
+<input type="text" id="a">
+<select id="sign">
+	<option value="plus">+</option>
+	<option value="minus">-</option>
+	<option value="ori">*</option>
+	<option value="div">/</option>
+	<option value="mod">%</option>
+</select>
+<input type="text" id="b">
+<input type="submit" onclick="calc();" value="Try me!">
+</div>
+</center>
+<script>
+	var selector = document.getElementById('sign');
+
+	setInterval(function() {
+		alert('Please, use me...');
+	}, 30000);
+
+	function isNumeric(n) {
+		return !isNaN(parseFloat(n)) && isFinite(n);
+	}
+
+	function isInt(n) {
+		return n % 1 === 0;
+	}
+
+	function display(rez) {
+		alert(rez);
+		console.log(rez);
+	}
+	
+	function calc() {
+		var sign = selector.options[selector.selectedIndex].value;
+		var a = document.getElementById('a');
+		var b = document.getElementById('b');
+		if(!isNumeric(a.value) || !isNumeric(b.value) || a.value < 0 || b.value < 0 || !isInt(a.value) || !isInt(b.value)) {
+			alert("Error :(");
+			return ;
+		}
+		if (b.value == 0 && (sign == 'div' || sign == 'mod')) {
+			alert("It's over 9000!");
+			console.log("It's over 9000!");
+			return ;
+		}
+		a = parseInt(a.value);
+		b = parseInt(b.value);
+		if (sign == 'plus')
+			display(a + b);
+		if (sign == 'minus')
+			display(a - b);
+		if (sign == 'ori')
+			display(a * b);
+		if (sign == 'div')
+			display(a / b);
+		if (sign == 'mod')
+			display(a % b);
+	}
+</script>
+</body>
+</html> 
